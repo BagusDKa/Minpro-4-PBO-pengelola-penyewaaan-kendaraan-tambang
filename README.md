@@ -6,12 +6,12 @@ Main, KendaraanView, KendaraanTambang, DumpTruck, dan Excavator tidak diubah. It
 
 Sebelumnya PengelolaKendaraan menyimpan data di ArrayList, jadi data hilang setiap program ditutup. Sekarang PengelolaKendaraan tidak menyimpan data sendiri. Semua operasi data diserahkan ke DAO, dan DAO dengan database lewat JDBC
 
-File baru
+File baru:
 database.sql: membuat tabel kendaraan dan mengisi 3 data awal. Data awal ada di SQL, bukan di kode Java.
 KoneksiDB: membuat koneksi ke MySQL lewat JDBC.
 KendaraanDAO (interface): daftar operasi data (insert, getAll, getById, update, delete, cari harga).
 KendaraanDAOImpl: isi SQL-nya, memakai PreparedStatement (tanda ? diisi lewat setString/setDouble) supaya aman dari SQL Injection. Method mapRow() mengubah baris tabel menjadi objek DumpTruck atau Excavator.
 
-Perubahan di KendaraanController
+Perubahan di KendaraanController:
 cariIndexById(id) != -1 diganti cari(id) != null.
 switch dibungkus try-catch, supaya error database menampilkan pesan dan tidak membuat program crash.
